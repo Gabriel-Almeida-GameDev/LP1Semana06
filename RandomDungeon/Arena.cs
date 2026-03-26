@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace RandomDungeon
 {
@@ -37,6 +38,18 @@ namespace RandomDungeon
         public void ShowEnemies()
         {
             // CÓDIGO AQUI
+
+            string Total = "Arena :";
+
+            foreach (var item in enemies)
+            {
+                
+                Total += string.Join(Convert.ToString(item));
+                Total += ", ";
+            } 
+
+            Total = Total.Remove(Total.Length - 2);
+            
         }
         
         // Simula uma Batalha Entre Dois Inimigos
@@ -44,7 +57,9 @@ namespace RandomDungeon
         {
             // Subtrai o Ataque do Atacante à Vida do Defensor
             // Garante que a Vida Não Fique Negativa
-            // CÓDIGO AQUI
+            // CÓDIGO AQUI 
+
+            int Contas = attacker.GetAttack() - defender.GetHealth();
             
             // Se a Vida do Defensor Chegar a 0, Remove-o da Arena
             // CÓDIGO AQUI
