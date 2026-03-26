@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 
 namespace RandomDungeon
@@ -59,10 +60,19 @@ namespace RandomDungeon
             // Garante que a Vida Não Fique Negativa
             // CÓDIGO AQUI 
 
-            int Contas = attacker.GetAttack() - defender.GetHealth();
-            
+            int DefenderHealth = attacker.GetAttack() - defender.GetHealth();
+            if (DefenderHealth < 0)
+            {
+                DefenderHealth = 0;
+            }
+
             // Se a Vida do Defensor Chegar a 0, Remove-o da Arena
             // CÓDIGO AQUI
+
+            if (DefenderHealth == 0)
+            {
+                Arena.RemoveEnemy(defender);
+            }
         }
     }
-}
+}  
